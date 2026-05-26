@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+.venv-wsl/
+venv/
+ENV/
+env/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Data files
+data/raw/
+data/processed/
+data/runs/*.csv
+data/runs/*.json
+!data/runs/.gitkeep
+data/
+
+# Models (downloaded)
+models/
+*.bin
+*.safetensors
+*.onnx
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Terraform state (should use remote backend)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Figures (regenerateable)
+figures/
+figures/*.png
+figures/*.pdf
+figures/*.svg
+
+# Coverage
+htmlcov/
+.coverage
+.pytest_cache/
+pytest-cache-files-*/
+
+# Chaincode binaries
+chaincode/agentecon
+chaincode/agentecon.exe
+
+# Docker volumes
+*.vol

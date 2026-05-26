@@ -1,0 +1,70 @@
+# AgentEcon Experiment Configuration
+
+experiment_name: "agentecon_replication"
+mode: "stylised"
+
+# Models (use stylised for initial runs, switch to LLM after calibration)
+models:
+  - "meta-llama/Meta-Llama-3.1-8B-Instruct"
+  - "mistralai/Mistral-7B-Instruct-v0.3"
+  - "Qwen/Qwen2.5-7B-Instruct"
+
+# Assets
+assets:
+  - "XAU_USD"    # Gold
+  - "WTI"        # Oil
+  - "EUR_USD"    # FX
+  - "CASE_SHILLER"  # Real estate
+
+# Random seeds for reproducibility
+seeds:
+  - 1234
+  - 2345
+  - 3456
+  - 4567
+  - 5678
+
+# Hyperparameters
+tau_values:
+  - 0.5
+  - 0.7
+  - 1.0
+  - 1.5
+  - 2.0
+
+lambda_values:
+  - 0.0
+  - 0.25
+  - 0.5
+  - 0.75
+  - 1.0
+
+# Experiment settings
+n_validators: 64
+n_llm_validators: 4
+n_stylised_validators: 60
+n_queries: 1000
+n_queries_pilot: 200
+n_queries_smoke: 10
+calibration_queries: 200
+
+grid_size: 1024
+
+# Oracle settings
+enable_sybil_detection: true
+enable_reputation: true
+sybil_ratio: 0.0
+
+# Stylised sampler settings
+use_stylised_for_large: true
+stylised_tv_threshold: 0.04
+llm_batch_size: 8
+tensor_parallel_size: 1
+gpu_memory_utilization: 0.85
+max_model_len: 2048
+hf_cache_dir: ""
+news_enabled: false
+fabric_backend: "simulator"
+
+# Output
+output_dir: "data/runs"

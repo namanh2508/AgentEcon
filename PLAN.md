@@ -86,3 +86,8 @@ Rủi ro lớn cần khóa trước khi code: ước lượng GPU-hour trong gui
 - Dùng open-weight LLM qua vLLM; nếu không có GPU đủ mạnh, giảm grid và dùng stylised sampler sau calibration.
 - Mọi số liệu trong paper phải sinh từ script và log, không nhập tay.
 - Trước full experiment bắt buộc chạy pilot throughput vì cost estimate trong guide cần được xác minh bằng batching thực tế.
+- Clarifications locked during implementation:
+  - `news_context` is currently not used as a real external news signal. Each query stores an explicit deterministic note saying that experiments use only the prior 7-day OHLC window. If news is added later, raw dated snippets must be saved, hashed, and included in prompt hashes before LLM calibration.
+  - Pilot calibration must be run for all three target LLMs from `experiment_guide.md`: `meta-llama/Meta-Llama-3.1-8B-Instruct`, `mistralai/Mistral-7B-Instruct-v0.3`, and `Qwen/Qwen2.5-7B-Instruct`.
+  - The WAN benchmark uses 4 physical Fabric peer instances and 64 logical validator identities, mapped by default as 16 logical validators per peer. Do not report this as 64 physical EC2 validators.
+  - Statistical reporting must include Cohen's d with the planned practical-effect target `d >= 0.5`, in addition to paired-bootstrap CI and Holm-Bonferroni tests.
